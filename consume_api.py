@@ -7,4 +7,9 @@ response = requests.get('https://api.stackexchange.com/2.3/questions?order=desc&
 # print(response.json()['items'])  # get list of items from the request
 
 for question in response.json()['items']:
-    print(question['title'])  # get each question from a list of items
+    if question['answer_count'] == 0:
+        print(question['title'])  # get each question from a list of items
+        print(question['link'])  # display link to each stackoverflow question
+    else:
+        print("Skipped")
+    print()
